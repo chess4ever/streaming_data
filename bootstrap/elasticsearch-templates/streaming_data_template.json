@@ -1,0 +1,81 @@
+{
+    "order": 0,
+    "template": "streaming_data-*",
+    "settings": {
+        "index": {
+            "refresh_interval": "10s"
+        }
+    },
+    "mappings": {
+        "streaming_data": {
+            "dynamic_templates": [
+                {
+                    "string_fields": {
+                        "mapping": {
+                            "norms": false,
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "ignore_above": 256,
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "match_mapping_type": "string",
+                        "match": "*"
+                    }
+                }
+            ],
+            "properties": {
+                "Speed": {
+                    "type": "double"
+                },
+                "@timestamp": {
+                    "type": "date"
+                },
+                "Temp": {
+                    "type": "double"
+                },
+                "Line_id": {
+                    "type": "long"
+                },
+                "Position": {
+                    "norms": false,
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "ignore_above": 256,
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "Car_id": {
+                    "norms": false,
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "ignore_above": 256,
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "@version": {
+                    "type": "keyword"
+                },
+                "Omega": {
+                    "type": "double"
+                },
+                "Timestamp": {
+                    "index": false,
+                    "type": "text"
+                },
+                "Press": {
+                    "type": "double"
+                }
+            }
+        }
+    },
+    "aliases": {
+        "all_streaming_data": {}
+    }
+}
